@@ -20,7 +20,7 @@ app.use((req,res,next) =>{
 app.use('/api/activities',activitiesRoutes)
 
 // Wrap Mongoose around local connection to MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/mygroceryDB', {
+mongoose.connect('mongodb://127.0.0.1:27017/placesPedia', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
