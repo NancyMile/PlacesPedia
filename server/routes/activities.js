@@ -1,4 +1,7 @@
 const express= require('express')
+const Activity = require('../models/activityModel')
+
+
 //create an instance of the router
 const router = express.Router()
 
@@ -13,8 +16,14 @@ const router = express.Router()
  })
 
  //post a new place
- router.post('/',(req,res) => {
-     res.json({message: 'Post Place'})
+ router.post('/', async (req,res) => {
+     const {title,comment} = req.body
+     try{
+         const activity = await Activity.create({title,comment})
+         res.status(200).json(activity)
+     }catch(error){
+        res.status(400).json({error: error.message})
+     }
  })
 
  //delete a place
