@@ -1,39 +1,28 @@
 const express= require('express')
-const Activity = require('../models/activityModel')
-
+const {
+    createActivity,
+    getActivities,
+    getActivity,
+    deleteActivity,
+    updateActivity
+} =require('../controllers/activityController')
 
 //create an instance of the router
 const router = express.Router()
 
 //list all places
- router.get('/', (req,res) => {
-     res.json({message:'Get list of places'})
- })
+ router.get('/', getActivities)
 
  //get a single place
- router.get('/:id',(req,res) => {
-     res.json({message:'Single Place'})
- })
+ router.get('/:id',getActivity)
 
  //post a new place
- router.post('/', async (req,res) => {
-     const {title,comment} = req.body
-     try{
-         const activity = await Activity.create({title,comment})
-         res.status(200).json(activity)
-     }catch(error){
-        res.status(400).json({error: error.message})
-     }
- })
+ router.post('/', createActivity)
 
  //delete a place
- router.delete('/:id',(req,res) => {
-    res.json({message: 'Delete a Place'})
-})
+ router.delete('/:id', deleteActivity)
 
 //update a place
-router.patch('/:id',(req,res) => {
-    res.json({message: 'update Place'})
-})
+router.patch('/:id', updateActivity)
 
 module.exports = router
