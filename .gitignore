@@ -1,2 +1,4 @@
 .env
 package-lock.json
+server/node_modules/
+node_modules
