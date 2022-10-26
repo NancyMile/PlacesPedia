@@ -1,6 +1,8 @@
 const { useState } = require("react")
+import { useActivitiesContext } from '../hooks/useActivitiesContext'
 
 const ActivitiesForm = () => {
+    const { dispatch } = useActivitiesContext()
     //set states
     const [title, setTitle] = useState('')
     const [comment, setComment] = useState('')
@@ -27,6 +29,7 @@ const ActivitiesForm = () => {
             setTitle('')
             setComment('')
             console.log('Activity created!', json)
+            dispatch({type: 'CREATE_ACTIVITY', payload: json})
         }
     }
 

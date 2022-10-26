@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+//import hook
+import { useActivitiesContext } from '../hooks/useActivitiesContext'
 //import components
 import ActivitiesDetails from "../components/ActivitiesDetails"
 import ActivitiesForm from "../components/ActivitiesForm"
 const Welcome = () =>{
     //set initial activities as null
-    const[activities, setActivities] = useState(null)
+    const { activities, dispatch } = useActivitiesContext()
 
     //fire a function once [] when the component is rendered
     useEffect(()=>{
@@ -14,7 +16,7 @@ const Welcome = () =>{
             const json = await response.json()
             //check if the response is ok
             if(response.ok){
-                setActivities(json)
+                dispatch({type: 'SET_ACTIVITIES', payload: json })
             }
         }
         fetchActivities()
