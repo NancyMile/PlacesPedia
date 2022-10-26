@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 //import components
 import ActivitiesDetails from "../components/ActivitiesDetails"
+import ActivitiesForm from "../components/ActivitiesForm"
 const Welcome = () =>{
     //set initial activities as null
     const[activities, setActivities] = useState(null)
@@ -20,13 +21,13 @@ const Welcome = () =>{
     },[])
     return(
         <div className="welcome">
-            <h1>Welcome to Places Pedia Activities</h1>
             {/* cicle throught the activities */}
             <div className="activities">
                 {activities && activities.map((activity) => (
                     <ActivitiesDetails key={activity._id} activity = {activity} />
                 ))}
             </div>
+            <ActivitiesForm/>
         </div>
     )
 }
