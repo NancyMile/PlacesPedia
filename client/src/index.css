@@ -46,7 +46,7 @@ header a{
 .activity-details{
   background: #eceff3;
   border-radius: 3px;
-  margin: 20 auto;
+  margin: 20px auto;
   position: relative;
   box-shadow: 2px 3px 5px rgb(46, 45, 45);
 }
@@ -61,6 +61,15 @@ header a{
   font-size: x-small;
   color: rgb(43, 41, 41);
 }
+
+.activity-details span{
+  cursor: pointer;
+  padding: 6px;
+  right: 20px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
 
 /* form */
 
