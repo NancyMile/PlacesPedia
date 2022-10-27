@@ -20,7 +20,7 @@ const Welcome = () =>{
             }
         }
         fetchActivities()
-    },[])
+    },[dispatch])
     return(
         <div className="welcome">
             {/* cicle throught the activities */}

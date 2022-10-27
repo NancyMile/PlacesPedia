@@ -1,4 +1,6 @@
 import { useActivitiesContext } from '../hooks/useActivitiesContext'
+//import date fns
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 const ActivitiesDetails = ({ activity }) =>{
     //dispatch to update the status
     const { dispatch } = useActivitiesContext()
@@ -17,7 +19,7 @@ const ActivitiesDetails = ({ activity }) =>{
         <div className="activity-details">
             <h3>{activity.title}</h3>
             <p>{activity.comment}</p>
-            <p>{activity.createdAt}</p>
+            <p>{formatDistanceToNow(new Date(activity.createdAt), { addSuffix: true })}</p>
             <span onClick={handleClick}>Delete</span>
         </div>
     )
