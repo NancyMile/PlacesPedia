@@ -5,6 +5,8 @@ const { connect } = require('http2')
 const mongoose = require('mongoose')
 //require the activities routes
 const activitiesRoutes = require('./routes/activities')
+//user routes
+const userRoutes = require('./routes/user')
 
 //create an express app
 const app = express()
@@ -18,6 +20,8 @@ app.use((req,res,next) =>{
 
 //handle request routes
 app.use('/api/activities',activitiesRoutes)
+//user routes
+app.use('/api/user',userRoutes)
 
 // Wrap Mongoose around local connection to MongoDB
 mongoose.connect('mongodb://127.0.0.1:27017/placesPedia', {
