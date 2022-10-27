@@ -25,6 +25,20 @@ if(!mongoose.Types.ObjectId.isValid(id)){
 //create activity
 const createActivity = async (req,res) => {
     const {title, comment} = req.body
+    //validate which fiekds are empty for displayig errors
+    let emptyFields = []
+
+    if(!title){
+        emptyFields.push('title')
+    }
+    if(!comment){
+        emptyFields.push('comment')
+    }
+    //count for any empty fields
+    if(emptyFields.length > 0){
+        return res.status(400).json({error:'Please fill everything',emptyFields})
+    }
+
     //add doc to database
     try{
         const activity = await Activity.create({title,comment})

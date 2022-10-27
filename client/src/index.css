@@ -95,10 +95,14 @@ form button{
   padding: 5px;
 }
 
+input .error {
+  border: 1px solid var(--error);
+}
+
 div .error{
   border: 1px solid var(--error);
   border-radius: 3px;
   margin: 20px 0;
-  background: rgb(224, 104, 128);
+  background: rgb(236, 210, 215);
   padding: 10px;
 }

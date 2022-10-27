@@ -8,6 +8,9 @@ const ActivitiesForm = () => {
     const [comment, setComment] = useState('')
     //set error to null
     const [error, setError] = useState(null)
+    //set array of empty fields
+    const [emptyFields, setEmptyFields] = useState([])
+
     //function for handle the form
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -22,10 +25,12 @@ const ActivitiesForm = () => {
         // check if the response is ok
         if(!response.ok){
             setError(json.error)
+            setEmptyFields(json.emptyFields)
         }
         if(response.ok){
             //clear the values for creating new ones
             setError(null)
+            setEmptyFields([])
             setTitle('')
             setComment('')
             console.log('Activity created!', json)
@@ -37,9 +42,9 @@ const ActivitiesForm = () => {
         <form className ="create" onSubmit={handleSubmit}>
             <h2>Add New Activity</h2>
             <label>Activity: </label>
-            <input type="text" onChange={(e) => setTitle(e.target.value)} value={title} />
+            <input type="text" onChange={(e) => setTitle(e.target.value)} value={title} className={emptyFields.includes('title')? 'error' : ''}/>
             <label>Comment: </label>
-            <input type="text" onChange={(e) => setComment(e.target.value)} value={comment} />
+            <input type="text" onChange={(e) => setComment(e.target.value)} value={comment} className={emptyFields.includes('comment')? 'error' : ''}/>
             <button>Add Activity</button>
             {error && <div className="error">{error}</div>}
         </form>
