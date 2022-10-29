@@ -8,8 +8,17 @@ const activitiesRoutes = require('./routes/activities')
 //user routes
 const userRoutes = require('./routes/user')
 
+//require module express-graphql
+//const graphqlHTTP = require('express-graphql')
+const { graphqlHTTP } = require('express-graphql');
+
 //create an express app
 const app = express()
+
+//set a middleware to handle grapql request
+app.use('/graphql',graphqlHTTP({
+
+}));
 
 //middleware
 app.use(express.json())
