@@ -3,6 +3,8 @@ const mongoose  = require('mongoose')
 
 //get all activities
 const getActivities = async (req,res) => {
+    //find  only the activities of the current user
+    const user_id = req.user._id
     const activities = await Activity.find({}).sort({createdAt: -1})
     return res.status(200).json(activities)
 }
@@ -41,7 +43,9 @@ const createActivity = async (req,res) => {
 
     //add doc to database
     try{
-        const activity = await Activity.create({title,comment})
+        //add the id of the user from req
+        const user_id = req.user._id
+        const activity = await Activity.create({title, comment, user_id})
         res.status(200).json(activity)
     }catch(error){
        res.status(400).json({error: error.message})

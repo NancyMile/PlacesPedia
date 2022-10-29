@@ -9,6 +9,10 @@ const activitySchema = new Schema({
     comment:{
         type: String,
         required: true
+    },
+    user_id:{
+        type: String,
+        required: true
     }
 },{timestamps:true})
  //creates activities on database 
