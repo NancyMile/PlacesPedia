@@ -8,7 +8,13 @@ const ActivityType = new GraphQLObjectType({
     fields:() =>({
         id: {type: GraphQLID},
         title: {type: GraphQLString},
-        comment: {type: GraphQLString}
+        comment: {type: GraphQLString},
+        user:{
+            type: UserType,
+            resolve(parent, args){
+                return _.find(users, {id:parent.user_id});
+            }
+        }
     })
 });
 
