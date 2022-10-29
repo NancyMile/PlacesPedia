@@ -1,8 +1,12 @@
 const { useState } = require("react")
 import { useActivitiesContext } from '../hooks/useActivitiesContext'
+//import user hook
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const ActivitiesForm = () => {
     const { dispatch } = useActivitiesContext()
+    //get user
+    const { user} = useAuthContext()
     //set states
     const [title, setTitle] = useState('')
     const [comment, setComment] = useState('')
@@ -14,11 +18,16 @@ const ActivitiesForm = () => {
     //function for handle the form
     const handleSubmit = async (e) => {
         e.preventDefault()
+        //check if the user is auth otherwiae return error
+        if(!user){
+            setError('Please Login')
+            return
+        }
 
         const activity = {title,comment}
         //fetch request
         const response = await fetch('/api/activities', {method: 'POST', body: JSON.stringify(activity),
-            headers:{'content-type':'application/json'}
+            headers:{'content-type':'application/json','Authorization':`Bearer ${user.token}`}
         })
         //save the response on json
         const json = await response.json()
