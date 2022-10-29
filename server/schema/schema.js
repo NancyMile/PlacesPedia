@@ -1,7 +1,7 @@
 const graphql = require('graphql')
 const_ = require('lodash') //find data or change data
 //get function GraphQlObjectType
-const { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID } = graphql
+const { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID, GraphQLList } = graphql
 //define a new type
 const ActivityType = new GraphQLObjectType({
     name: "Activity",
@@ -23,7 +23,13 @@ const UserType = new GraphQLObjectType({
     name: "User",
     fields:() =>({
         id: {type: GraphQLID},
-        email: {type: GraphQLString}
+        email: {type: GraphQLString},
+        activities:{
+            type: new GraphQLList(ActivityType),
+            resolve(parent, args){
+                return _.filter(activities, {user_id: parent.id})
+            }
+        }
     })
 });
 
