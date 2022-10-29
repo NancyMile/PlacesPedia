@@ -1,5 +1,8 @@
 import{BrowserRouter,Routes,Route} from 'react-router-dom'
 import Welcome from './pages/Welcome'
+import Login from './pages/Login'
+import Signup from './pages/Signup'
+
 import Navbar  from './components/Navbar'
 function App() {
   return (
@@ -12,6 +15,14 @@ function App() {
               path = "/"
               element = {<Welcome /> }
               /> 
+              <Route
+              path = "/login"
+              element = {<Login /> }
+              />
+              <Route
+              path = "/signup"
+              element = {<Signup /> }
+              />
           </Routes>
         </div>
       </BrowserRouter>

@@ -14,7 +14,7 @@ export const authReducer = ( state, action) => {
 
 
 //componet to wrap the application a provide a value
-export const AuthContextProv = ({ children}) => {
+export const AuthContextProvider = ({ children}) => {
     //register state
     const [state, dispatch] = useReducer(authReducer, {user:null})
     console.log("Auth context state:", state)
