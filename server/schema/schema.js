@@ -1,4 +1,5 @@
 const graphql = require('graphl')
+const_ = require('lodash') //find data or change data
 //get function GraphQlObjectType
 const { GraphQLObjectType, GraphQLString, GraphQLSchema } = graphql
 //define a new type
@@ -21,6 +22,7 @@ const RootQuery = new GraphQLObjectType({
             args:{ id:{type:GraphQLString}},
             resolve(parent, args){
                 //get data from the db to the source
+               return  _.find(activities, {id: args.id});
             }
         }
     }
