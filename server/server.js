@@ -19,7 +19,8 @@ const app = express()
 
 //set a middleware to handle grapql request
 app.use('/graphql',graphqlHTTP({
-  schema
+  schema,
+  graphiql:true
 }));
 
 //middleware
