@@ -11,13 +11,15 @@ const userRoutes = require('./routes/user')
 //require module express-graphql
 //const graphqlHTTP = require('express-graphql')
 const { graphqlHTTP } = require('express-graphql');
+//import schema
+ const schema = require('./schema/schema')
 
 //create an express app
 const app = express()
 
 //set a middleware to handle grapql request
 app.use('/graphql',graphqlHTTP({
-
+  schema
 }));
 
 //middleware
