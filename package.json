@@ -1,0 +1,17 @@
+{
+  "name": "Place-Pedia-Activities",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server/server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run start\"  \"npm run client\""
+  },
+  "keywords": [],
+  "author": "Nancy S",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.5.0"
+  }
+}
