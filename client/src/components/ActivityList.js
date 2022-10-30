@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+//import React, { Component } from "react";
 import { useQuery, gql } from "@apollo/client";
 
 //create the  query

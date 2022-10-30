@@ -3,6 +3,8 @@ const express = require('express')
 const { connect } = require('http2')
 //require mongoose
 const mongoose = require('mongoose')
+//require cors
+const cors = require('cors')
 //require the activities routes
 const activitiesRoutes = require('./routes/activities')
 //user routes
@@ -16,6 +18,8 @@ const { graphqlHTTP } = require('express-graphql');
 
 //create an express app
 const app = express()
+// cross origin request
+app.use(cors());
 
 //set a middleware to handle grapql request
 app.use('/graphql',graphqlHTTP({
