@@ -53,11 +53,9 @@ if (process.env.NODE_ENV === 'production'){
 // end  deployment to heroku
 
 // Wrap Mongoose around local connection to MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/placesPedia', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-
+//mongoose.set('bufferCommands', false);
+const uri = process.env.MONGODB_URI || 'mongodb://mongo/'+process.env.MONGODB
+mongoose.connect(uri,{ useNewUrlParser: true });
 
 //listen request
 app.listen(process.env.PORT,() => {
