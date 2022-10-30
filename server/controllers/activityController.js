@@ -5,7 +5,7 @@ const mongoose  = require('mongoose')
 const getActivities = async (req,res) => {
     //find  only the activities of the current user
     const user_id = req.user._id
-    const activities = await Activity.find({}).sort({createdAt: -1})
+    const activities = await Activity.find({user_id}).sort({createdAt: -1})
     return res.status(200).json(activities)
 }
 
