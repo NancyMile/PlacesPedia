@@ -58,6 +58,7 @@ const uri = process.env.MONGODB_URI || 'mongodb://mongo/'+process.env.MONGODB
 mongoose.connect(uri,{ useNewUrlParser: true });
 
 //listen request
-app.listen(process.env.PORT,() => {
+const PORT = process.env.PORT || 5000;
+app.listen(PORT,() => {
     console.log('listening port',process.env.PORT)
 })
