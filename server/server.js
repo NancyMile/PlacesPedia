@@ -15,6 +15,7 @@ const userRoutes = require('./routes/user')
 const { graphqlHTTP } = require('express-graphql');
 //import schema
  const schema = require('./schema/schema')
+const path = require('path')
 
 //create an express app
 const app = express()
@@ -38,6 +39,18 @@ app.use((req,res,next) =>{
 app.use('/api/activities',activitiesRoutes)
 //user routes
 app.use('/api/user',userRoutes)
+
+//deployment to heroku
+__dirname=path.resolve();
+if (process.env.NODE_ENV === 'production'){
+  app.use(express.static(path.join(__dirname,"/client/build")));
+  app.get('*',(req,res) => {
+    res.sendFile(path.resolve(__dirname,'client','build','index.html'));
+  });
+
+}
+
+// end  deployment to heroku
 
 // Wrap Mongoose around local connection to MongoDB
 mongoose.connect('mongodb://127.0.0.1:27017/placesPedia', {
