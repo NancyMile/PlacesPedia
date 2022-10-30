@@ -1,4 +1,6 @@
 import{BrowserRouter,Routes,Route,Navigate} from 'react-router-dom'
+import React from 'react';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 // import hook auth
 import { useAuthContext } from './hooks/useAuthContext'
 import Welcome from './pages/Welcome'
@@ -6,6 +8,13 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 
 import Navbar  from './components/Navbar'
+import ActivityList  from './components/ActivityList'
+//apollo client setup
+const client = new ApolloClient({
+  uri: "http://localhost:5000/graphql",
+  cache: new InMemoryCache()
+});
+
 function App() {
   //get user
    const { user } = useAuthContext()
@@ -17,7 +26,9 @@ function App() {
           <Routes>
             <Route 
               path = "/"
-              element = { user ? <Welcome /> : <Navigate to ="/login" /> }
+              element = { user ? <Welcome /> : <ApolloProvider client={client}>
+              <ActivityList></ActivityList>
+            </ApolloProvider> }
               /> 
               <Route
               path = "/login"
