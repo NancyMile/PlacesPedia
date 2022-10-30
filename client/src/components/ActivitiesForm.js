@@ -1,7 +1,7 @@
-const { useState } = require("react")
 import { useActivitiesContext } from '../hooks/useActivitiesContext'
 //import user hook
 import { useAuthContext } from '../hooks/useAuthContext'
+const { useState } = require("react")
 
 const ActivitiesForm = () => {
     const { dispatch } = useActivitiesContext()

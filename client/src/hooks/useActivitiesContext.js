@@ -1,7 +1,6 @@
-const { ActivitiesContextProvider } = require("../context/ActivityContext");
-
 import { ActivitiesContext } from '../context/ActivityContext'
 import { useContext } from 'react'
+const { ActivitiesContextProvider } = require("../context/ActivityContext");
 
 export const useActivitiesContext = () => {
     // get the object and store on context
