@@ -43,9 +43,9 @@ app.use('/api/user',userRoutes)
 //deployment to heroku
 __dirname=path.resolve();
 if (process.env.NODE_ENV === 'production'){
-  app.use(express.static(path.join(__dirname,"/client/build")));
-  app.get('*',(req,res) => {
-    res.sendFile(path.resolve(__dirname,'client','build','index.html'));
+  app.use(express.static(path.join(__dirname,"client","build")));
+  app.get('*',(req, res) => {
+    res.sendFile(path.join(__dirname,'client','build','index.html'));
   });
 
 }
@@ -58,7 +58,7 @@ const uri = process.env.MONGODB_URI || 'mongodb://mongo/'+process.env.MONGODB
 mongoose.connect(uri,{ useNewUrlParser: true });
 
 //listen request
-const PORT = process.env.PORT || 5000;
-app.listen(PORT,() => {
+const port = process.env.PORT || 5000;
+app.listen(port,() => {
     console.log('listening port',process.env.PORT)
 })
