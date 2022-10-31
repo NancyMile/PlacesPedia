@@ -55,7 +55,7 @@ if (process.env.NODE_ENV === 'production'){
 // Wrap Mongoose around local connection to MongoDB
 //mongoose.set('bufferCommands', false);
 const mongodb_uri = process.env.MONGODB_URI || 'mongodb://mongo/'+process.env.MONGODB
-mongoose.connect(mongobd_uri,{ useNewUrlParser: true });
+mongoose.connect(mongodb_uri,{ useNewUrlParser: true });
 
 //listen request
 const port = process.env.PORT || 5000;

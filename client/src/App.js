@@ -11,7 +11,7 @@ import Navbar  from './components/Navbar'
 import ActivityList  from './components/ActivityList'
 //apollo client setup
 const client = new ApolloClient({
-  uri: "http://localhost:"+process.env.PORT+"/graphql",
+  uri: "http://localhost:5000/graphql",
   cache: new InMemoryCache()
 });
 
