@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from 'App';
+import App from './App';
 //import context component
 import { ActivitiesContextProvider } from './context/ActivityContext'
 // import auth context
